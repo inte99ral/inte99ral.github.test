@@ -23,7 +23,7 @@
         .split('&')
         .map((item) => {
           data = item.split('=', 2);
-          queryString.data[0] = data[1];
+          queryString.data[0] = data.length < 2 ? data[1] : '';
         });
 
       console.dir(queryString);
