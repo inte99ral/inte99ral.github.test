@@ -20,8 +20,8 @@
       const hostname = localStorage.getItem('HOSTNAME') || '';
       const pathname = localStorage.getItem('PATHNAME') || '';
       const search = localStorage.getItem('SEARCH') || '';
-      console.log('[ANSWER]', `${hostname}/${pathname}/${search}`);
-      window.history.replaceState(null, null, `${hostname}/${pathname}/${search}`);
+      console.log('[ANSWER]', `${protocol}//${hostname}${pathname}${search}`);
+      window.history.replaceState(null, null, `${protocol}//${hostname}${pathname}${search}`);
     </script>
   </body>
 </html>
