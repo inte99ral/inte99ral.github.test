@@ -16,9 +16,11 @@
 
     <div id="root"></div>
     <script type="text/javascript">
+      const protocol = localStorage.getItem('PROTOCAL') || '';
+      const hostname = localStorage.getItem('HOSTNAME') || '';
       const pathname = localStorage.getItem('PATHNAME') || '';
       const search = localStorage.getItem('SEARCH') || '';
-      window.history.replaceState(null, null, `/${pathname}/${search}`);
+      window.history.replaceState(null, null, `${hostname}/${pathname}/${search}`);
     </script>
   </body>
 </html>

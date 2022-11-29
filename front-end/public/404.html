@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <title>Integral Blog</title>
     <script type="text/javascript">
+      localStorage.setItem('PROTOCOL', window.location.protocol);
+      localStorage.setItem('HOSTNAME', window.location.hostname);
       localStorage.setItem('PATHNAME', window.location.pathname);
       localStorage.setItem('SEARCH', window.location.search);
       window.location.replace(`/`);
