@@ -19,8 +19,8 @@
       const pathname = localStorage.getItem('PATHNAME') || '';
       const search = localStorage.getItem('SEARCH') || '';
 
-      localStorage.removeItem('PATHNAME');
-      localStorage.removeItem('SEARCH');
+      // localStorage.removeItem('PATHNAME');
+      // localStorage.removeItem('SEARCH');
 
       window.history.replaceState(null, null, `/${pathname}/${search}`);
     </script>
