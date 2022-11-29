@@ -16,12 +16,16 @@
 
     <div id="root"></div>
     <script type="text/javascript">
-      console.log('[protocol]: ', window.location.protocol);
+      alert(`[protocol]: ${window.location.protocol}`);
+      alert(`[hostname]: ${window.location.hostname}`);
+      alert(`[pathname]: ${window.location.pathname}`);
+      alert(`[port]: ${window.location.port}`);
+      alert(`[search]: ${window.location.search}`);
+
       console.log('[hostname]: ', window.location.hostname);
       console.log('[pathname]: ', window.location.pathname);
       console.log('[port]: ', window.location.port);
       console.log('[search]: ', window.location.search);
-      console.log('되는거맞음?');
       window.history.replaceState(null, null, 'home');
     </script>
   </body>

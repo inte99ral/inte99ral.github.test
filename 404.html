@@ -4,7 +4,11 @@
     <meta charset="utf-8" />
     <title>404</title>
     <script type="text/javascript">
-      window.location.replace('/?data1=test1&data2=test2');
+      alert(`[protocol]: ${window.location.protocol}`);
+      alert(`[hostname]: ${window.location.hostname}`);
+      alert(`[pathname]: ${window.location.pathname}`);
+      alert(`[port]: ${window.location.port}`);
+      alert(`[search]: ${window.location.search}`);
 
       // var l = window.location;
       // l.replace(
