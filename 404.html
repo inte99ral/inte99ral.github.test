@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <title>404</title>
     <script type="text/javascript">
-      alert('멈춰!');
-      window.location.replace(`/?pathname=${window.location.pathname}`);
+      window.location.replace(
+        `/?port=${window.location.port}&pathname=${window.location.pathname}&search=${window.location.search}`,
+      );
 
       // var l = window.location;
       // l.replace(
