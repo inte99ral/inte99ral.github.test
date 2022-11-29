@@ -9,29 +9,20 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <title>React App</title>
+    <title>Integral Blog</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
     <div id="root"></div>
     <script type="text/javascript">
-      const queryString = { port: '-', pathname: '-', search: '-' };
+      const pathname = localStorage.getItem('PATHNAME') || '';
+      const search = localStorage.getItem('SEARCH') || '';
 
-      window.location.search
-        .substr(1)
-        .split('&')
-        .map((item) => {
-          console.log(!!item);
-          data = item.split('=', 2);
-          console.log('[key]: ', data[0]);
-          console.log('[value]: ', data[1]);
-          queryString.data[0] = data[1] ? data[1] : '';
-        });
+      localStorage.removeItem('PATHNAME');
+      localStorage.removeItem('SEARCH');
 
-      console.log('[queryString]: ', queryString);
-
-      window.history.replaceState(null, null, 'home');
+      window.history.replaceState(null, null, `/${pathname}/${search}`);
     </script>
   </body>
 </html>

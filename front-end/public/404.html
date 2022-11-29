@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <title>Integral Blog</title>
     <script type="text/javascript">
-      window.location.replace(
-        `/?port=${window.location.port}&pathname=${window.location.pathname}&search=${window.location.search}`,
-      );
+      localStorage.setItem('PATHNAME', window.location.pathname);
+      localStorage.setItem('SEARCH', window.location.search);
+      window.location.replace(`/`);
     </script>
   </head>
   <body></body>
