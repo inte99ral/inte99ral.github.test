@@ -41,35 +41,6 @@
 
 <br/>
 
-- npm install react-router-dom @types/react-router-dom
-
-  - 라우터 설정을 정의할 AppRouter.tsx 를 생성
-
-    ```typescript
-    // API & Library
-    import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-
-    // Components
-    import { HomePage } from "components/pages/HomePage";
-    import { ErrorPage } from "components/pages/ErrorPage";
-
-    export const AppRouter = () => {
-      // Return
-      return (
-        <>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Navigate replace to="/home" />} />
-              <Route path="/home" element={<HomePage />} />
-              <Route path="/error" element={<ErrorPage />} />
-              <Route path="/*" element={<Navigate replace to="/error" />} />
-            </Routes>
-          </BrowserRouter>
-        </>
-      );
-    };
-    ```
-
 - ### eslint & prettier 세팅
 
   - 앞서서 eslint & prettier 란?
@@ -188,3 +159,79 @@
         }
       }
       ```
+
+<br />
+
+- ### react router 주소 세팅
+
+  - npm install react-router-dom @types/react-router-dom
+
+    - 테스트로 사용할 홈페이지 HomePage.tsx 를 생성
+
+      ```typescript
+      // front-end/src/components/pages/HomePage/index.tsx
+      // API & Library
+      import React from "react";
+
+      export const HomePage = () => {
+        // Return
+        return (
+          <>
+            <div>홈페이지임다.</div>
+          </>
+        );
+      };
+      ```
+
+    - 에러 핸들링을 할 페이지 ErrorPage.tsx 를 생성
+
+      ```typescript
+      // front-end/src/components/pages/ErrorPage/index.tsx
+      // API & Library
+      import React from "react";
+
+      export const ErrorPage = () => {
+        // Return
+        return (
+          <>
+            <div>에러났슴다.</div>
+          </>
+        );
+      };
+      ```
+
+    - 라우터 설정을 정의할 AppRouter.tsx 를 생성
+
+      ```typescript
+      // API & Library
+      import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+
+      // Components
+      import { HomePage } from "components/pages/HomePage";
+      import { ErrorPage } from "components/pages/ErrorPage";
+
+      export const AppRouter = () => {
+        // Return
+        return (
+          <>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Navigate replace to="/home" />} />
+                <Route path="/home" element={<HomePage />} />
+                <Route path="/error" element={<ErrorPage />} />
+                <Route path="/*" element={<Navigate replace to="/error" />} />
+              </Routes>
+            </BrowserRouter>
+          </>
+        );
+      };
+      ```
+
+  - npm start 로 테스트 가능
+  - npm run build 로 만들어진 build 폴더 안의 내용물을 최상단, index.html 이 있는 맨 앞으로 복사 붙여넣기한다.
+  - 404 에러 발생
+    - 위의 방법을 똑같이 따라왔다면 새로고침시에 404에러가 발생한다. 이는 React의 SPA 구조를 gitpage가 받아들이지 못해서 발생하는 문제이다.
+    - github.io 는 그 밑에 github.io/home 이라는 주소를 이해하지 못하며 그때, 404.html 를 화면에 띄우려고한다.
+    - 이 상황을 해결해주기 위해서 404.html 파일을 직접 생성해준 뒤, 입력받은 주소를 데이터로 바꾸어 github.io/ 주소에 넘겨주자
+
+<br />
