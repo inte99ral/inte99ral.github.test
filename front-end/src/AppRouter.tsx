@@ -13,8 +13,7 @@ export const AppRouter = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="/home/*" element={<HomePage />} />
-          <Route path="/ho/*" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/*" element={<Navigate replace to="/error" />} />
         </Routes>
