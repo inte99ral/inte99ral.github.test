@@ -229,11 +229,57 @@
 
   - npm start 로 테스트 가능
   - npm run build 로 만들어진 build 폴더 안의 내용물을 최상단, index.html 이 있는 맨 앞으로 복사 붙여넣기한다.
-  - 404 에러 발생
+  - 404 에러 발생 시
+
     - 위의 방법을 똑같이 따라왔다면 새로고침시에 404에러가 발생한다. 이는 React의 SPA 구조를 gitpage가 받아들이지 못해서 발생하는 문제이다.
     - github.io 는 그 밑에 github.io/home 이라는 주소를 이해하지 못하며 그때, 404.html 를 화면에 띄우려고한다.
     - 이 상황을 해결해주기 위해서 404.html 파일을 직접 생성해준 뒤, 입력받은 주소를 데이터로 바꾸어 github.io/ 주소에 넘겨주자
-    - 404.html -> index.html 로 정보를 넘겨주는 것은 여러 방법이 있는데, 여기선 그 중 가장 구현이 빠르고 이해가 쉬운 localstorage를 이용하는 방법을 쓰겠다.
-    1. 404.html 에서 script로 현 주소 정보를 localstorage에
+    - 404.html -> index.html 로 정보를 넘겨주는 것은 여러 방법이 있는데, 이번 설명에서는 빠르게 전체주소를 쿼리스트링으로 넘겨주도록 하겠다.
+
+    <br />
+
+    1. 404.html 의 현 주소를 그대로 쿼리스트링에 집어넣고 index.html 로 연결되는 '/' 주소로 가는 javascript 코드를 넣는다
+
+    ```html
+    // front-end/public/404.html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <title>Integral Blog</title>
+        <script type="text/javascript">
+          window.location.replace(`/?url=${window.location.href}`);
+        </script>
+      </head>
+      <body></body>
+    </html>
+    ```
+
+    2. index.html 에서 받아온 주소를 window.history.replaceState를 통해 처리한다.
+
+    ```html
+    // front-end/public/index.html
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="Web site created using create-react-app" />
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+        <title>Integral Blog</title>
+      </head>
+      <body>
+        <div id="root"></div>
+        <script type="text/javascript">
+          if (window.location.search.slice(1, 4) == 'url')
+            window.history.replaceState(null, null, `${window.location.search.slice(5)}`);
+        </script>
+      </body>
+    </html>
+    ```
 
 <br />

@@ -12,24 +12,10 @@
     <title>Integral Blog</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-
     <div id="root"></div>
     <script type="text/javascript">
-      // const protocol = localStorage.getItem('PROTOCOL') || '';
-      // const hostname = localStorage.getItem('HOSTNAME') || '';
-      // const pathname = localStorage.getItem('PATHNAME') || '';
-      // const search = localStorage.getItem('SEARCH') || '';
-
-      // localStorage.removeItem('PROTOCOL');
-      // localStorage.removeItem('HOSTNAME');
-      // localStorage.removeItem('PATHNAME');
-      // localStorage.removeItem('SEARCH');
-
-      // console.log('[ANSWER]:', `${protocol}//${hostname}${pathname}${search}`);
-      // window.history.replaceState(null, null, `${protocol}//${hostname}${pathname}${search}`);
-      console.log('[URL]:', `${window.location.search.slice(5)}`);
-      window.history.replaceState(null, null, `${window.location.search.slice(5)}`);
+      if (window.location.search.slice(1, 4) == 'url')
+        window.history.replaceState(null, null, `${window.location.search.slice(5)}`);
     </script>
   </body>
 </html>
