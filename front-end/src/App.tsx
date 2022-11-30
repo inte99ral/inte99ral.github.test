@@ -2,6 +2,9 @@
 import React, { useEffect } from 'react';
 import { AppRouter } from 'AppRouter';
 
+// Components
+import { SideBar } from 'components/commons/SideBar';
+
 const App = () => {
   // LifeCycle
   useEffect(() => {
@@ -10,8 +13,8 @@ const App = () => {
 
   // Return
   return (
-    <div className="App">
-      <header className="App-header"></header>
+    <div className="app">
+      <SideBar />
       <AppRouter />
     </div>
   );
